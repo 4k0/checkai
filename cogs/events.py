@@ -1,9 +1,9 @@
-
 import discord
 from discord.ext import commands
 from discord.ext.commands import errors
 
 from helpers import config
+
 
 class Events(commands.Cog):
     """Event listeners for handling command errors, command usage, and bot readiness."""
@@ -34,9 +34,7 @@ class Events(commands.Cog):
         elif isinstance(err, errors.CheckFailure):
             pass
         elif isinstance(err, errors.MaxConcurrencyReached):
-            await ctx.send(
-                f'You are already using this command.'
-            )
+            await ctx.send(f'You are already using this command.')
         elif isinstance(err, errors.CommandOnCooldown):
             # if user has role 1234 or 5678, bypass cooldown
             await ctx.send(
